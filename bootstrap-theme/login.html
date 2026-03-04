@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate SaaS - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="d-flex align-items-center" style="min-height: 100vh;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <div class="text-center mb-4">
+                    <a href="index.html" class="text-decoration-none">
+                        <h2 class="fw-bold"><i class="bi bi-box-fill icon"></i>CorporateSaaS</h2>
+                    </a>
+                </div>
+
+                <div class="card p-4">
+                    <h4 class="fw-bold text-center mb-4">Sign In</h4>
+
+                    <form action="dashboard.html">
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope icon m-0"></i></span>
+                                <input type="email" class="form-control" placeholder="name@company.com" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock icon m-0"></i></span>
+                                <input type="password" id="passwordInput" class="form-control"
+                                    placeholder="Enter password" required>
+                                <button class="btn toggle-password border" type="button" data-target="passwordInput"
+                                    style="border-color: #e0e0e0; background-color: #ffffff; color: #1B5E20 !important; cursor: pointer;">
+                                    <i class="bi bi-eye icon m-0" style="color: #1B5E20;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2"><i
+                                class="bi bi-box-arrow-in-right icon text-white"></i> Sign In</button>
+                        <div class="text-center mt-3">
+                            <a href="index.html" class="small fw-bold">Back to Home</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

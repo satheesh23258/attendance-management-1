@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate SaaS - Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Styling for the UI-only Custom Toggle Switch (Deep Green) */
+        .form-switch .form-check-input {
+            width: 2.5em;
+            height: 1.25em;
+            border-color: #1B5E20;
+        }
+
+        .form-switch .form-check-input:checked {
+            background-color: #1B5E20;
+            border-color: #1B5E20;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-none d-md-block" href="index.html">
+                <i class="bi bi-box-fill icon"></i>CorporateSaaS
+            </a>
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list fs-2 icon"></i>
+            </button>
+            <div class="d-flex align-items-center ms-auto">
+                <a href="dashboard.html" class="me-3 text-dark text-decoration-none" style="color:#1B5E20 !important;">
+                    <i class="bi bi-house icon fs-5 m-0 mb-1"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-white">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link fw-bold">
+                                <i class="bi bi-grid icon"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <span class="px-3 text-muted fw-bold small text-uppercase"
+                                style="color:#1B5E20 !important;">Management</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="settings.html" class="nav-link active fw-bold">
+                                <i class="bi bi-gear icon"></i> Settings
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4 border-top pt-2">
+                            <a href="#" class="nav-link fw-bold" id="logout-btn">
+                                <i class="bi bi-box-arrow-right icon"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                    <h1 class="h2 fw-bold">Account Settings</h1>
+                </div>
+
+                <div id="settings-alert" class="alert d-none mb-4 fw-bold" role="alert">
+                    <i id="settings-alert-icon" class="bi bi-exclamation-circle me-2"></i>
+                    <span id="settings-alert-msg"></span>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card p-4 h-100 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                            <h4 class="fw-bold mb-4">Profile Information</h4>
+
+                            <form id="profile-form">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Full Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person icon m-0"></i></span>
+                                        <input type="text" id="profile-name" class="form-control fw-bold" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope icon m-0"></i></span>
+                                        <input type="email" id="profile-email" class="form-control fw-bold" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mt-4 form-check form-switch p-0">
+                                    <label class="form-check-label fw-bold d-block mb-2"
+                                        for="notificationToggle">Notifications</label>
+                                    <input class="form-check-input ms-0 mt-0" type="checkbox" id="notificationToggle"
+                                        checked style="cursor: pointer;">
+                                    <span class="ms-2 small fw-bold">Enable Email & System Alerts</span>
+                                </div>
+
+                                <div class="mb-3 mt-4 pt-3 border-top">
+                                    <label class="form-label fw-bold d-block">Profile Picture</label>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-person-circle fs-1 icon me-3"></i>
+                                        <button type="button" class="btn btn-primary btn-sm fw-bold"><i
+                                                class="bi bi-upload icon m-0 me-1 text-white"></i> Upload New</button>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary px-4 py-2 mt-2 fw-bold w-100 w-md-auto"><i
+                                        class="bi bi-check-circle icon m-0 me-1 text-white"></i> Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card p-4 h-100 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                            <h4 class="fw-bold mb-4">Security</h4>
+
+                            <form id="password-form">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Old Password</label>
+                                    <div class="input-group mb-1">
+                                        <span class="input-group-text"><i class="bi bi-lock icon m-0"></i></span>
+                                        <input type="password" id="oldPassword" class="form-control" required
+                                            minlength="6">
+                                        <button class="btn border toggle-password" type="button"
+                                            data-target="oldPassword"
+                                            style="border-color: #e0e0e0; background-color: #ffffff;">
+                                            <i class="bi bi-eye icon m-0" style="color: #1B5E20;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">New Password</label>
+                                    <div class="input-group mb-1">
+                                        <span class="input-group-text"><i class="bi bi-lock icon m-0"></i></span>
+                                        <input type="password" id="newPassword" class="form-control" required
+                                            minlength="6">
+                                        <button class="btn border toggle-password" type="button"
+                                            data-target="newPassword"
+                                            style="border-color: #e0e0e0; background-color: #ffffff;">
+                                            <i class="bi bi-eye icon m-0" style="color: #1B5E20;"></i>
+                                        </button>
+                                    </div>
+                                    <div id="pwd-strength" class="small fw-bold mt-1">Strength: <span
+                                            id="pwd-strength-text">Empty</span></div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Confirm Password</label>
+                                    <div class="input-group mb-1">
+                                        <span class="input-group-text"><i class="bi bi-lock icon m-0"></i></span>
+                                        <input type="password" id="confirmPassword" class="form-control" required
+                                            minlength="6">
+                                    </div>
+                                    <div id="pwd-match" class="small fw-bold mt-1"></div>
+                                </div>
+                                <button type="submit" class="btn btn-primary px-4 py-2 mt-2 fw-bold w-100 w-md-auto"><i
+                                        class="bi bi-check-circle icon m-0 me-1 text-white"></i> Update
+                                    Password</button>
+                            </form>
+
+                            <hr class="my-4">
+                            <h4 class="fw-bold mb-3">Danger Zone</h4>
+                            <!-- Strict color rule: no red button, only green -->
+                            <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#deleteAccountModal">
+                                <i class="bi bi-trash icon m-0 me-1 text-white"></i> Delete Account
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow border-0">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold">Delete Account</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="fw-bold fs-5">Are you completely sure?</p>
+                    <p class="fw-bold">This action cannot be undone. All your data, settings, and items will be
+                        permanently erased.</p>
+                </div>
+                <div class="modal-footer border-top">
+                    <!-- using outline primary style (black/white/green) instead of secondary -->
+                    <button type="button" class="btn fw-bold" data-bs-dismiss="modal"
+                        style="border: 1px solid #000; color: #000; background: white;">Cancel</button>
+                    <button type="button" class="btn btn-primary fw-bold" id="confirmDeleteAccountBtn">
+                        <i class="bi bi-check-circle icon m-0 me-1 text-white"></i>Confirm Deletion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

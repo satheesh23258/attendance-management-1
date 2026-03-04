@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate SaaS - Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-none d-md-block" href="index.html">
+                <i class="bi bi-box-fill icon"></i>CorporateSaaS
+            </a>
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list fs-2 icon"></i>
+            </button>
+            <div class="d-flex align-items-center ms-auto">
+                <a href="dashboard.html" class="me-3 text-dark text-decoration-none" style="color:#1B5E20 !important;">
+                    <i class="bi bi-house icon fs-5 m-0 mb-1"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-white">
+                <div class="position-sticky">
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">
+                                <i class="bi bi-grid icon"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <span class="px-3 text-muted fw-bold small text-uppercase"
+                                style="color:#1B5E20 !important;">Management</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="settings.html" class="nav-link active">
+                                <i class="bi bi-gear icon"></i> Settings
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a href="login.html" class="nav-link">
+                                <i class="bi bi-box-arrow-right icon"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                    <h1 class="h2 fw-bold">Account Settings</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card p-4" style="border: 1px solid #e0e0e0 !important;">
+                            <h4 class="fw-bold mb-4">Profile Information</h4>
+
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Full Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person icon m-0"></i></span>
+                                        <input type="text" class="form-control fw-bold" value="Admin Local">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope icon m-0"></i></span>
+                                        <input type="email" class="form-control fw-bold" value="admin@company.com">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mt-4">
+                                    <label class="form-label d-block">Profile Picture</label>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-person-circle fs-1 icon me-3"></i>
+                                        <button type="button" class="btn btn-primary btn-sm"><i
+                                                class="bi bi-upload icon m-0 me-1 text-white"></i> Upload New</button>
+                                    </div>
+                                </div>
+
+                                <hr class="my-4">
+                                <h4 class="fw-bold mb-4">Security</h4>
+
+                                <div class="mb-4">
+                                    <label class="form-label">New Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-lock icon m-0"></i></span>
+                                        <input type="password" id="newPassword" class="form-control fw-bold"
+                                            placeholder="Enter new password">
+                                        <button class="btn toggle-password border" type="button"
+                                            data-target="newPassword"
+                                            style="border-color: #e0e0e0; background-color: #ffffff; color: #1B5E20 !important; cursor: pointer;">
+                                            <i class="bi bi-eye icon m-0" style="color: #1B5E20;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-primary px-4 py-2 mt-2"><i
+                                        class="bi bi-check-circle icon m-0 me-1 text-white"></i> Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

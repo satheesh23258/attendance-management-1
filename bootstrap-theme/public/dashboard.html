@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate SaaS - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .counter-anim {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-none d-md-block" href="index.html">
+                <i class="bi bi-box-fill icon"></i>CorporateSaaS
+            </a>
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-list fs-2 icon"></i>
+            </button>
+            <div class="d-flex align-items-center ms-auto">
+                <div class="dropdown me-4">
+                    <a href="#" class="position-relative text-dark text-decoration-none dropdown-toggle-hidden"
+                        id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-bell icon fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                            id="notif-count">2</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="notificationDropdown"
+                        style="min-width: 250px;">
+                        <li>
+                            <h6 class="dropdown-header text-dark fw-bold border-bottom">Notifications</h6>
+                        </li>
+                        <li><a class="dropdown-item py-2 fw-bold" href="#"><i class="bi bi-info-circle icon"></i> System
+                                updated heavily</a></li>
+                        <li><a class="dropdown-item py-2 fw-bold" href="#"><i class="bi bi-info-circle icon"></i> Weekly
+                                report ready</a></li>
+                    </ul>
+                </div>
+                <a href="settings.html" class="d-flex align-items-center text-dark text-decoration-none"
+                    style="color: #1B5E20 !important;">
+                    <i class="bi bi-person-circle icon m-0 fs-4"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-white">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link active fw-bold">
+                                <i class="bi bi-grid icon"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <span class="px-3 text-muted fw-bold small text-uppercase"
+                                style="color:#1B5E20 !important;">Management</span>
+                        </li>
+                        <li class="nav-item">
+                            <a href="settings.html" class="nav-link fw-bold">
+                                <i class="bi bi-gear icon"></i> Settings
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4 border-top pt-2">
+                            <a href="#" class="nav-link fw-bold" id="logout-btn">
+                                <i class="bi bi-box-arrow-right icon"></i> Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4">
+                    <h1 class="h2 fw-bold mb-0" id="welcome-msg">Welcome, User</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0 mt-3 mt-md-0">
+                        <button type="button" class="btn btn-sm btn-primary me-2 fw-bold">
+                            <i class="bi bi-download icon m-0 me-1 text-white"></i> Export
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary fw-bold" data-bs-toggle="modal"
+                            data-bs-target="#taskModal" onclick="openAddTaskModal()">
+                            <i class="bi bi-plus icon m-0 me-1 text-white"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Metric Cards -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-check-circle icon fs-1 m-0 me-3"></i>
+                                <div class="ms-1">
+                                    <h6 class="mb-0 fw-bold">Total Items</h6>
+                                    <h3 class="mb-0 fw-bold counter-anim" data-target="0" id="total-items-count">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-chat-dots icon fs-1 m-0 me-3"></i>
+                                <div class="ms-1">
+                                    <h6 class="mb-0 fw-bold">Messages</h6>
+                                    <h3 class="mb-0 fw-bold counter-anim" data-target="56">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-bell icon fs-1 m-0 me-3"></i>
+                                <div class="ms-1">
+                                    <h6 class="mb-0 fw-bold">Notifications</h6>
+                                    <h3 class="mb-0 fw-bold counter-anim" data-target="2">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-box icon fs-1 m-0 me-3"></i>
+                                <div class="ms-1">
+                                    <h6 class="mb-0 fw-bold">Orders</h6>
+                                    <h3 class="mb-0 fw-bold counter-anim" data-target="152">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dashboard-alert" class="alert d-none fw-bold" role="alert"></div>
+
+                <!-- Data Table -->
+                <h4 class="fw-bold mb-3 mt-5">Data Management</h4>
+                <div class="table-responsive card p-3 shadow-sm border-0" style="border: 1px solid #e0e0e0 !important;">
+                    <div class="d-flex mb-3">
+                        <div class="input-group" style="max-width: 300px;">
+                            <span class="input-group-text bg-white"><i class="bi bi-search icon m-0"></i></span>
+                            <input type="text" id="table-search" class="form-control border-start-0 ps-0 fw-bold"
+                                placeholder="Filter items...">
+                        </div>
+                    </div>
+                    <table class="table table-hover align-middle mb-0" id="data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="fw-bold border-bottom">ID</th>
+                                <th scope="col" class="fw-bold border-bottom">User</th>
+                                <th scope="col" class="fw-bold border-bottom">Action/Item</th>
+                                <th scope="col" class="fw-bold border-bottom">Date</th>
+                                <th scope="col" class="text-end fw-bold border-bottom">Manage</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Dynamically populated -->
+                        </tbody>
+                    </table>
+                    <div id="table-loader" class="text-center py-4 text-muted fw-bold">Loading Data...</div>
+                    <div id="no-data-msg" class="text-center py-4 text-muted fw-bold d-none">No active items</div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Task Modal for Add/Edit -->
+    <div class="modal fade" id="taskModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="taskModalLabel">Manage Item</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="taskForm">
+                        <input type="hidden" id="taskId">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Item Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-pencil icon m-0"></i></span>
+                                <input type="text" class="form-control fw-bold" id="taskName" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn fw-bold" data-bs-dismiss="modal"
+                        style="border: 1px solid #000; color: #000; background: white;">Cancel</button>
+                    <button type="button" class="btn btn-primary fw-bold" id="saveTaskBtn"><i
+                            class="bi bi-check-circle icon m-0 me-1 text-white"></i>Save Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
