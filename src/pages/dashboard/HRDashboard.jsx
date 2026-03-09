@@ -42,6 +42,12 @@ const HRDashboard = () => {
   const { colors } = useTheme()
   const { user } = useAuth()
   const navigate = useNavigate()
+
+  const getInitials = (name) => {
+    if (!name) return '?'
+    return name.split(' ').map(n => n[0]).join('').toUpperCase()
+  }
+
   const [stats, setStats] = useState({
     totalEmployees: 0,
     presentToday: 0,
@@ -194,7 +200,7 @@ const HRDashboard = () => {
                     <Typography color="textSecondary" gutterBottom variant="overline">
                       {card.title}
                     </Typography>
-                    <Typography variant="h4" component="div">
+                    <Typography variant="h4" component="div" sx={{ color: card.color }}>
                       {card.value}
                     </Typography>
                     <Box display="flex" alignItems="center" mt={1}>
@@ -213,7 +219,7 @@ const HRDashboard = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  <Avatar sx={{ bgcolor: '#000000', color: 'black' }}>
+                  <Avatar sx={{ bgcolor: '#00c853', color: '#ffffff' }}>
                     {card.icon}
                   </Avatar>
                 </Box>
@@ -235,8 +241,12 @@ const HRDashboard = () => {
                 {topPerformers.map((performer, index) => (
                   <ListItem key={performer.name}>
                     <ListItemAvatar>
-                      <Avatar sx={{ bgcolor: '#000000', color: 'black' }}>
-                        {index + 1}
+                      <Avatar sx={{ 
+                        bgcolor: 'primary.main',
+                        color: 'white',
+                        fontWeight: 'bold' 
+                      }}>
+                        {getInitials(performer.name)}
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText
@@ -254,9 +264,9 @@ const HRDashboard = () => {
                           width: 100,
                           mt: 1,
                           '& .MuiLinearProgress-bar': {
-                            backgroundColor: '#000000'
+                            backgroundColor: '#4caf50'
                           },
-                          backgroundColor: 'rgba(255, 193, 7, 0.2)'
+                          backgroundColor: 'rgba(76, 175, 80, 0.1)'
                         }}
                       />
                     </Box>
@@ -289,7 +299,7 @@ const HRDashboard = () => {
                       </TableCell>
                       <TableCell>{stats.presentToday}</TableCell>
                       <TableCell>
-                        {Math.round((stats.presentToday / stats.totalEmployees) * 100)}%
+                        {stats.totalEmployees > 0 ? Math.round((stats.presentToday / stats.totalEmployees) * 100) : 0}%
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -298,7 +308,7 @@ const HRDashboard = () => {
                       </TableCell>
                       <TableCell>{stats.totalEmployees - stats.presentToday}</TableCell>
                       <TableCell>
-                        {Math.round(((stats.totalEmployees - stats.presentToday) / stats.totalEmployees) * 100)}%
+                        {stats.totalEmployees > 0 ? Math.round(((stats.totalEmployees - stats.presentToday) / stats.totalEmployees) * 100) : 0}%
                       </TableCell>
                     </TableRow>
                   </TableBody>

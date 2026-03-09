@@ -1,10 +1,11 @@
 import express from 'express';
 import Location from '../models/Location.js';
+import { auth, requireRole } from '../middleware/auth.js';
 
 const router = express.Router();
 
 // GET live locations
-router.get('/live', async (req, res) => {
+router.get('/live', auth, requireRole('admin', 'hr'), async (req, res) => {
   try {
     const locations = await Location.find({ isActive: true })
       .populate('employeeId', 'name email')
@@ -16,7 +17,7 @@ router.get('/live', async (req, res) => {
 });
 
 // GET location history
-router.get('/history', async (req, res) => {
+router.get('/history', auth, async (req, res) => {
   try {
     const { employeeId } = req.query;
     const filter = employeeId ? { employeeId } : {};
@@ -28,7 +29,7 @@ router.get('/history', async (req, res) => {
 });
 
 // POST update location
-router.post('/update', async (req, res) => {
+router.post('/update', auth, async (req, res) => {
   try {
     const location = await Location.create(req.body);
     res.status(201).json(location);

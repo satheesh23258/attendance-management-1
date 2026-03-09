@@ -129,32 +129,32 @@ const AdminDashboard = () => {
     {
       title: 'Total Employees',
       value: stats.totalEmployees,
-      icon: <People />,
-      color: '#000000', // Red color
+      icon: <People sx={{ color: 'white' }} />,
+      color: '#1e88e5', // Blue
       change: '+12%',
       changeType: 'increase'
     },
     {
       title: 'Present Today',
       value: stats.presentToday,
-      icon: <AccessTime />,
-      color: '#000000', // Red color
+      icon: <AccessTime sx={{ color: 'white' }} />,
+      color: '#43a047', // Green
       change: '+5%',
       changeType: 'increase'
     },
     {
       title: 'Active Services',
       value: stats.activeServices,
-      icon: <Assignment />,
-      color: '#000000', // Red color
+      icon: <Assignment sx={{ color: 'white' }} />,
+      color: '#fb8c00', // Orange
       change: '+3%',
       changeType: 'increase'
     },
     {
       title: 'Live Locations',
       value: stats.liveLocations,
-      icon: <LocationOn />,
-      color: '#000000', // Red color
+      icon: <LocationOn sx={{ color: 'white' }} />,
+      color: '#e53935', // Red
       change: '+2',
       changeType: 'increase'
     }
@@ -207,8 +207,8 @@ const AdminDashboard = () => {
           <Box sx={{ 
             px: 4, 
             py: 2, 
-            borderBottom: '2px solid #2f80ed',
-            color: '#2f80ed',
+            borderBottom: '2px solid #00c853',
+            color: '#00c853',
             fontWeight: 'bold',
             mb: '-1px',
             fontSize: '15px'
@@ -258,6 +258,7 @@ const AdminDashboard = () => {
                   <Avatar
                     sx={{
                       bgcolor: card.color,
+                      color: '#ffffff',
                       width: 56,
                       height: 56
                     }}
@@ -489,7 +490,7 @@ const AdminDashboard = () => {
                 {recentActivities.map((activity, index) => (
                   <ListItem key={index} alignItems="flex-start">
                     <ListItemAvatar>
-                      <Avatar sx={{ bgcolor: '#000000' }}>
+                      <Avatar sx={{ bgcolor: '#00c853', color: '#ffffff' }}>
                         {activity.icon}
                       </Avatar>
                     </ListItemAvatar>

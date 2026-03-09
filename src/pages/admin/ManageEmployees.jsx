@@ -25,7 +25,11 @@ import {
   FormControl,
   InputLabel,
   Select,
-  CircularProgress
+  CircularProgress,
+  Switch,
+  InputAdornment,
+  FormControlLabel,
+  Divider
 } from '@mui/material'
 import {
   ArrowBack,
@@ -38,6 +42,8 @@ import { useTheme } from '../../contexts/ThemeContext'
 import { employeeAPI } from '../../services/api'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { CloudUpload, FilterList, FileDownload } from '@mui/icons-material'
 
 const ManageEmployees = () => {
   const { colors } = useTheme()
@@ -54,7 +60,11 @@ const ManageEmployees = () => {
     department: '',
     position: '',
     status: 'Active',
-    employeeId: ''
+    employeeId: '',
+    isRemote: false,
+    officeLat: 40.7128,
+    officeLng: -74.006,
+    officeRadius: 100
   })
 
   useEffect(() => {
@@ -104,10 +114,36 @@ const ManageEmployees = () => {
       phone: employee.phone,
       department: employee.department,
       position: employee.position,
-      status: employee.status,
-      employeeId: employee.employeeId
+      status: employee.status || 'Active',
+      employeeId: employee.employeeId,
+      isRemote: employee.isRemote || false,
+      officeLat: employee.officeLocation?.lat || 40.7128,
+      officeLng: employee.officeLocation?.lng || -74.006,
+      officeRadius: employee.officeLocation?.radius || 100
     })
     setOpenDialog(true)
+  }
+
+  const handleBulkImport = () => {
+    // Trigger hidden file input
+    document.getElementById('bulk-import-input').click()
+  }
+
+  const onFileChange = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    const formData = new FormData()
+    formData.append('csv', file)
+    try {
+      setLoading(true)
+      await axios.post('/api/employees/bulk-import', formData)
+      toast.success('Bulk import successful')
+      loadEmployees()
+    } catch (err) {
+      toast.error('Import failed: ' + err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleDelete = async (id) => {
@@ -200,21 +236,41 @@ const ManageEmployees = () => {
             </Typography>
           </Box>
         </Box>
-        <Button
-          variant="contained"
-          color="inherit"
-          startIcon={<Add />}
-          onClick={handleAdd}
-          sx={{
-            bgcolor: 'white',
-            color: '#000000',
-            fontWeight: 600,
-            '&:hover': { bgcolor: '#f5f5f5' },
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-          }}
-        >
-          Add Employee
-        </Button>
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <input type="file" id="bulk-import-input" hidden accept=".csv" onChange={onFileChange} />
+            <Button
+              variant="contained"
+              color="inherit"
+              startIcon={<CloudUpload />}
+              onClick={handleBulkImport}
+              sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.3)' } }}
+            >
+              Bulk Import
+            </Button>
+            <Button
+              variant="outlined"
+              color="inherit"
+              onClick={() => window.open('/api/employees/import-template', '_blank')}
+              sx={{ borderColor: 'rgba(255,255,255,0.2)', color: 'white', '&:hover': { borderColor: 'white' } }}
+            >
+              Template
+            </Button>
+            <Button
+              variant="contained"
+              color="inherit"
+              startIcon={<Add />}
+              onClick={handleAdd}
+              sx={{
+                bgcolor: 'white',
+                color: '#000000',
+                fontWeight: 600,
+                '&:hover': { bgcolor: '#f5f5f5' },
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}
+            >
+              Add Employee
+            </Button>
+          </Box>
       </Box>
 
       {/* Main Content */}
@@ -457,6 +513,41 @@ const ManageEmployees = () => {
                   helperText="Leave blank to auto-generate if supported"
                 />
               </Grid>
+            )}
+            <Grid item xs={12}>
+              <Divider sx={{ my: 2 }} />
+              <Typography variant="subtitle2" color="primary" gutterBottom>Work Mode & Geo-fence</Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FormControlLabel 
+                control={<Switch checked={formData.isRemote} onChange={(e) => setFormData({ ...formData, isRemote: e.target.checked })} />} 
+                label="Remote Worker" 
+              />
+            </Grid>
+            {!formData.isRemote && (
+              <>
+                <Grid item xs={12} sm={4}>
+                  <TextField 
+                    fullWidth label="Office Lat" type="number" value={formData.officeLat} 
+                    onChange={e => setFormData({ ...formData, officeLat: parseFloat(e.target.value) })}
+                    size="small"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField 
+                    fullWidth label="Office Lng" type="number" value={formData.officeLng} 
+                    onChange={e => setFormData({ ...formData, officeLng: parseFloat(e.target.value) })}
+                    size="small"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <TextField 
+                    fullWidth label="Radius (m)" type="number" value={formData.officeRadius} 
+                    onChange={e => setFormData({ ...formData, officeRadius: parseInt(e.target.value) })}
+                    size="small"
+                  />
+                </Grid>
+              </>
             )}
           </Grid>
         </DialogContent>

@@ -51,7 +51,8 @@ import {
   AttachFile,
   Phone,
   ArrowForward,
-  ArrowBack
+  ArrowBack,
+  Search
 } from '@mui/icons-material'
 import { useAuth } from '../../contexts/AuthContext'
 import { toast } from 'react-hot-toast'
@@ -407,7 +408,7 @@ const LeaveApplication = () => {
     switch (status?.toLowerCase()) {
       case 'approved': return '#4caf50'
       case 'pending': return '#00c853'
-      case 'rejected': return '#00c853'
+      case 'rejected': return '#f44336'
       case 'cancelled': return '#9e9e9e'
       default: return '#000000'
     }
@@ -433,7 +434,7 @@ const LeaveApplication = () => {
           : isAdmin
             ? '#00c853'
             : '#00c853',
-        color: isEmployee || isAdmin ? 'white' : 'black',
+        color: 'white',
         p: 3,
         display: 'flex',
         justifyContent: 'space-between',
@@ -756,7 +757,7 @@ const LeaveApplication = () => {
                   <Card sx={{ backgroundColor: '#fff3e0', border: '2px solid #00c853' }}>
                     <CardContent sx={{ textAlign: 'center' }}>
                       <Schedule sx={{ fontSize: 40, color: '#00c853', mb: 1 }} />
-                      <Typography variant="h6" color="#00c853">
+                      <Typography variant="h6" color="#ff9800">
                         PENDING
                       </Typography>
                       <Typography variant="body2">
@@ -769,7 +770,7 @@ const LeaveApplication = () => {
                   <Card sx={{ backgroundColor: '#ffebee', border: '2px solid #00c853' }}>
                     <CardContent sx={{ textAlign: 'center' }}>
                       <Cancel sx={{ fontSize: 40, color: '#00c853', mb: 1 }} />
-                      <Typography variant="h6" color="#00c853">
+                      <Typography variant="h6" color="#f44336">
                         REJECTED
                       </Typography>
                       <Typography variant="body2">
@@ -781,8 +782,8 @@ const LeaveApplication = () => {
                 <Grid item xs={12} md={3}>
                   <Card sx={{ backgroundColor: '#e3f2fd', border: '2px solid #00c853' }}>
                     <CardContent sx={{ textAlign: 'center' }}>
-                      <Event sx={{ fontSize: 40, color: '#00c853', mb: 1 }} />
-                      <Typography variant="h6" color="#00c853">
+                      <Event sx={{ fontSize: 40, color: '#2196f3', mb: 1 }} />
+                      <Typography variant="h6" color="#2196f3">
                         TOTAL DAYS
                       </Typography>
                       <Typography variant="body2">

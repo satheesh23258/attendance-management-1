@@ -140,10 +140,10 @@ const HRAttendance = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'present': return '#4caf50'
-      case 'absent': return '#00c853'
-      case 'late': return '#00c853'
-      case 'halfday': return '#00c853'
-      default: return '#000000'
+      case 'absent': return '#f44336'
+      case 'late': return '#ff9800'
+      case 'halfday': return '#2196f3'
+      default: return '#757575'
     }
   }
 
@@ -220,8 +220,8 @@ const HRAttendance = () => {
     <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', p: 3 }}>
       {/* Header */}
       <Box sx={{
-        backgroundColor: '#000000', // Updated to match theme
-        color: 'black', // Updated text color for contrast
+        backgroundColor: '#00c853', // Updated to match theme
+        color: 'white', // Updated text color for contrast
         p: 3,
         borderRadius: 2,
         mb: 3,
@@ -256,12 +256,12 @@ const HRAttendance = () => {
         <Grid item xs={12} md={3}>
           <Card sx={{
             backgroundColor: '#e3f2fd',
-            border: '2px solid #00c853',
+            border: '2px solid #2196f3',
             borderRadius: 2
           }}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <Group sx={{ fontSize: 40, color: '#00c853', mb: 1 }} />
-              <Typography variant="h4" color="#00c853" gutterBottom>
+              <Group sx={{ fontSize: 40, color: '#2196f3', mb: 1 }} />
+              <Typography variant="h4" color="#2196f3" gutterBottom>
                 {getUniqueEmployees().length}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -292,12 +292,12 @@ const HRAttendance = () => {
         <Grid item xs={12} md={3}>
           <Card sx={{
             backgroundColor: '#ffebee',
-            border: '2px solid #00c853',
+            border: '2px solid #f44336',
             borderRadius: 2
           }}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <Cancel sx={{ fontSize: 40, color: '#00c853', mb: 1 }} />
-              <Typography variant="h4" color="#00c853" gutterBottom>
+              <Cancel sx={{ fontSize: 40, color: '#f44336', mb: 1 }} />
+              <Typography variant="h4" color="#f44336" gutterBottom>
                 {attendanceData.filter(r => r.status === 'absent').length}
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -310,12 +310,12 @@ const HRAttendance = () => {
         <Grid item xs={12} md={3}>
           <Card sx={{
             backgroundColor: '#fff3e0',
-            border: '2px solid #00c853',
+            border: '2px solid #ff9800',
             borderRadius: 2
           }}>
             <CardContent sx={{ textAlign: 'center' }}>
-              <Schedule sx={{ fontSize: 40, color: '#00c853', mb: 1 }} />
-              <Typography variant="h4" color="#00c853" gutterBottom>
+              <Schedule sx={{ fontSize: 40, color: '#ff9800', mb: 1 }} />
+              <Typography variant="h4" color="#ff9800" gutterBottom>
                 {attendanceData.filter(r => r.status === 'late').length}
               </Typography>
               <Typography variant="body2" color="text.secondary">

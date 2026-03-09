@@ -1,12 +1,13 @@
 import express from 'express';
 import User from '../models/User.js';
 import Employee from '../models/Employee.js';
+import { auth, requireRole } from '../middleware/auth.js';
 import { sendEmail } from '../utils/smsService.js';
 
 const router = express.Router();
 
 // GET pending admins
-router.get('/pending-admins', async (req, res) => {
+router.get('/pending-admins', auth, requireRole('admin'), async (req, res) => {
   try {
     const pendingAdmins = await User.find({ role: 'admin', status: 'pending' }).select('-password');
     res.json(pendingAdmins);
@@ -16,7 +17,7 @@ router.get('/pending-admins', async (req, res) => {
 });
 
 // PATCH approve admin
-router.patch('/:id/approve', async (req, res) => {
+router.patch('/:id/approve', auth, requireRole('admin'), async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
@@ -45,7 +46,7 @@ router.patch('/:id/approve', async (req, res) => {
 });
 
 // PATCH reject admin
-router.patch('/:id/reject', async (req, res) => {
+router.patch('/:id/reject', auth, requireRole('admin'), async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ message: 'User not found' });

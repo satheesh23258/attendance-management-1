@@ -16,7 +16,8 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  TextField
+  TextField,
+  IconButton
 } from '@mui/material'
 import {
   AccessTime,
@@ -26,7 +27,8 @@ import {
   ArrowBack,
   LocationOn,
   Schedule,
-  History
+  History,
+  Person
 } from '@mui/icons-material'
 
 const CheckInOutTest = () => {
@@ -112,9 +114,9 @@ const CheckInOutTest = () => {
         alignItems: 'center'
       }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Button color="inherit" onClick={handleBack} startIcon={<ArrowBack />}>
-            Back
-          </Button>
+          <IconButton color="inherit" onClick={handleBack} title="Back">
+            <ArrowBack />
+          </IconButton>
           <Typography variant="h4">
             Check In/Out
           </Typography>

@@ -10,9 +10,9 @@ import DashboardLayout from "./components/DashboardLayout";
 
 // Original Components
 import MyTasks from "./pages/employee/MyTasks";
-import CheckInOutSimple from "./pages/employee/CheckInOutSimple";
+import CheckInOutEnhanced from "./pages/employee/CheckInOutEnhanced";
 import MyLocation from "./pages/employee/MyLocation";
-import MyProfileSimple from "./pages/employee/MyProfileSimple";
+import MyProfileEnhanced from "./pages/employee/MyProfileEnhanced";
 import ManageEmployees from "./pages/admin/ManageEmployees";
 import EmployeeList from "./pages/employees/EmployeeList";
 import EmployeeForm from "./pages/employees/EmployeeForm";
@@ -117,9 +117,9 @@ function App() {
         <Route element={<DashboardLayout />}>
         {/* Employee Routes */}
         <Route path="/employee/mytasks" element={<MyTasks />} />
-        <Route path="/employee/checkinout" element={<CheckInOutSimple />} />
+        <Route path="/employee/checkinout" element={<CheckInOutEnhanced />} />
         <Route path="/employee/mylocation" element={<MyLocation />} />
-        <Route path="/employee/myprofile" element={<MyProfileSimple />} />
+        <Route path="/employee/myprofile" element={<MyProfileEnhanced />} />
         <Route
           path="/employee/leave-application"
           element={<LeaveApplication />}
@@ -142,7 +142,7 @@ function App() {
         />
         {/* Aliases so quick-action paths work */}
         <Route path="/employee/location" element={<MyLocation />} />
-        <Route path="/employee/profile" element={<MyProfileSimple />} />
+        <Route path="/employee/profile" element={<MyProfileEnhanced />} />
         {/* Admin Routes */}
         <Route path="/admin/manage-employees" element={<ManageEmployees />} />
         <Route path="/admin/employees" element={<EmployeeList />} />
@@ -237,7 +237,7 @@ function App() {
         />
 
         {/* Unified Quick Actions Routes mapping to their features */}
-        <Route path="/profile" element={<MyProfileSimple />} />
+        <Route path="/profile" element={<MyProfileEnhanced />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/admin/system-settings" element={<Settings />} />
 

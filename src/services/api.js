@@ -71,6 +71,13 @@ export const employeeAPI = {
   update: (id, data) => api.put(`/employees/${id}`, data),
   delete: (id) => api.delete(`/employees/${id}`),
   toggleStatus: (id) => api.patch(`/employees/${id}/toggle-status`),
+  getMe: () => api.get('/employees/me'),
+  uploadDocument: (id, formData) => api.post(`/employees/${id}/documents`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }),
+  submitExpense: (formData) => api.post('/employees/expenses', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }),
 }
 
 // Attendance API

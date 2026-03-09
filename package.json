@@ -20,15 +20,19 @@
     "@mui/material": "^5.14.20",
     "@mui/x-charts": "^6.18.3",
     "@mui/x-data-grid": "^6.18.3",
+    "@vitejs/plugin-react-swc": "^4.2.3",
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",
+    "framer-motion": "^12.35.1",
     "jwt-decode": "^4.0.0",
+    "lucide-react": "^0.577.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^15.0.0",
     "react-hook-form": "^7.48.2",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.20.1",
-    "recharts": "^2.8.0"
+    "recharts": "^2.15.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -39,6 +43,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-pwa": "^1.2.0"
   }
 }

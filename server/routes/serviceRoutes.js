@@ -1,10 +1,11 @@
 import express from 'express';
 import Service from '../models/Service.js';
+import { auth, requireRole } from '../middleware/auth.js';
 
 const router = express.Router();
 
 // GET all services
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const services = await Service.find()
       .populate('assignedTo', 'name email')
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET my services (assigned to current user)
-router.get('/my', async (req, res) => {
+router.get('/my', auth, async (req, res) => {
   try {
     const { assignedTo } = req.query;
     const filter = assignedTo ? { assignedTo } : {};
@@ -32,7 +33,7 @@ router.get('/my', async (req, res) => {
 });
 
 // GET single service
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   try {
     const service = await Service.findById(req.params.id)
       .populate('assignedTo', 'name email')
@@ -45,7 +46,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // POST create service
-router.post('/', async (req, res) => {
+router.post('/', auth, requireRole('admin', 'hr'), async (req, res) => {
   try {
     const service = await Service.create(req.body);
     res.status(201).json(service);
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
 });
 
 // PUT update service
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, requireRole('admin', 'hr'), async (req, res) => {
   try {
     const service = await Service.findByIdAndUpdate(
       req.params.id,
@@ -70,7 +71,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // PATCH update status
-router.patch('/:id/status', async (req, res) => {
+router.patch('/:id/status', auth, async (req, res) => {
   try {
     const { status } = req.body;
     const update = { status };
@@ -88,7 +89,7 @@ router.patch('/:id/status', async (req, res) => {
 });
 
 // DELETE service
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, requireRole('admin'), async (req, res) => {
   try {
     const service = await Service.findByIdAndDelete(req.params.id);
     if (!service) return res.status(404).json({ message: 'Service not found' });

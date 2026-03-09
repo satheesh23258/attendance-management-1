@@ -1,3 +1,5 @@
+import { toast } from 'react-hot-toast'
+
 // JWT Token Simulation
 export const generateJWT = (user) => {
   const header = {

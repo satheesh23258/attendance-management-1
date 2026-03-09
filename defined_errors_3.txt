@@ -1,0 +1,2 @@
+C:\Users\ADMIN\attendance-management\bootstrap-theme\public\js\script.js :   283:25  error    'bootstrap' is not defined        no-undef
+C:\Users\ADMIN\attendance-management\bootstrap-theme\public\js\script.js :   296:11  error    'bootstrap' is not defined        no-undef

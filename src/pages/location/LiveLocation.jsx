@@ -356,7 +356,7 @@ const LiveLocation = () => {
   }
 
   const getStatusColor = (isActive) => {
-    return isActive ? '#00c853' : '#000000'
+    return isActive ? '#00c853' : '#f44336'
   }
 
   const filteredLocations = selectedEmployee === 'all'
@@ -549,10 +549,8 @@ const LiveLocation = () => {
       {renderLoadingOverlay()}
       {/* Header */}
       <Box sx={{
-        background: user?.role === 'admin'
-          ? '#00c853'
-          : '#000000',
-        color: user?.role === 'admin' ? 'white' : 'black',
+        background: '#00c853',
+        color: 'white',
         p: 3,
         display: 'flex',
         justifyContent: 'space-between',

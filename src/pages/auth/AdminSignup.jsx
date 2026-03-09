@@ -208,7 +208,7 @@ const AdminSignup = () => {
               }}>
                 <PersonAdd sx={{ fontSize: 40 }} />
               </Avatar>
-              <Typography variant="h4" sx={{ color: "#000000" }} gutterBottom fontWeight="bold" gutterBottom>
+              <Typography variant="h4" sx={{ color: "#000000" }} fontWeight="bold" gutterBottom>
                 Admin Registration
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -369,7 +369,7 @@ const AdminSignup = () => {
                   )}
                   {phoneVerified && (
                     <Box sx={{ mt: 1, p: 0.5, bgcolor: '#e8f5e9', borderRadius: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ color: '#1B5E20', fontSize: 16 }} />
+                      <CheckCircle sx={{ color: '#62d26aff', fontSize: 16 }} />
                       <Typography variant="caption" sx={{ color: "#000000" }} gutterBottom fontWeight="bold">Phone verified</Typography>
                     </Box>
                   )}
@@ -411,7 +411,7 @@ const AdminSignup = () => {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton onClick={() => setShowPassword(!showPassword)} edge="end" sx={{ color: "#000000" }}>
-                        {showPassword ? <VisibilityOff sx={{ color: "#000000" }} /> : <Visibility sx={{ color: "#1B5E20" }} />}
+                        {showPassword ? <VisibilityOff sx={{ color: "#000000" }} /> : <Visibility sx={{ color: "#59c160ff" }} />}
                       </IconButton>
                     </InputAdornment>
                   )
@@ -437,7 +437,7 @@ const AdminSignup = () => {
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton onClick={() => setShowPassword(!showPassword)} edge="end" sx={{ color: "#000000" }}>
-                        {showPassword ? <VisibilityOff sx={{ color: "#000000" }} /> : <Visibility sx={{ color: "#1B5E20" }} />}
+                        {showPassword ? <VisibilityOff sx={{ color: "#000000" }} /> : <Visibility sx={{ color: "#67d06eff" }} />}
                       </IconButton>
                     </InputAdornment>
                   )
