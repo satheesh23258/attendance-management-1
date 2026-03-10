@@ -47,6 +47,7 @@ import {
 } from 'recharts'
 import { attendanceAPI, employeeAPI } from '../../services/api'
 import toast from 'react-hot-toast'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const AttendanceAnalytics = () => {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth())
@@ -160,7 +161,7 @@ const AttendanceAnalytics = () => {
   }
 
   return (
-    <Box>
+    <DashboardLayout title="Attendance Analytics & Insights">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
         <Typography variant="h4" component="h1">
           Attendance Analytics
@@ -498,7 +499,7 @@ const AttendanceAnalytics = () => {
           </TableContainer>
         </CardContent>
       </Card>
-    </Box>
+    </DashboardLayout>
   )
 }
 

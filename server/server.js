@@ -78,9 +78,18 @@ app.use('/api/hybrid-permissions', hybridPermissionRoutes);
 import leaveRoutes from './routes/leaveRoutes.js';
 import expenseRoutes from './routes/expenseRoutes.js';
 import auditRoutes from './routes/auditRoutes.js';
+import payrollRoutes from './routes/payrollRoutes.js';
+import shiftRoutes from './routes/shiftRoutes.js';
+import ticketRoutes from './routes/ticketRoutes.js';
+import assetRoutes from './routes/assetRoutes.js';
+
 app.use('/api/leaves', leaveRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/audit', auditRoutes);
+app.use('/api/payroll', payrollRoutes);
+app.use('/api/shifts', shiftRoutes);
+app.use('/api/tickets', ticketRoutes);
+app.use('/api/assets', assetRoutes);
 
 // Seed database with UI data if empty
 const seedDatabase = async () => {

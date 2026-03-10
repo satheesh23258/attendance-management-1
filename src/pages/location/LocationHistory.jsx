@@ -34,6 +34,7 @@ import {
 } from '@mui/icons-material'
 import { locationAPI, employeeAPI } from '../../services/api'
 import toast from 'react-hot-toast'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const LocationHistory = () => {
   const [locationHistory, setLocationHistory] = useState([])
@@ -133,7 +134,7 @@ const LocationHistory = () => {
   }
 
   return (
-    <Box>
+    <DashboardLayout title="Employee Location Tracking">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
         <Typography variant="h4" component="h1">
           Location History
@@ -395,7 +396,7 @@ const LocationHistory = () => {
           </Box>
         </CardContent>
       </Card>
-    </Box>
+    </DashboardLayout>
   )
 }
 

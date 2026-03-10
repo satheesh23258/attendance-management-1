@@ -58,6 +58,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { leaveAPI, notificationAPI } from '../../services/api'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const LeaveApplication = () => {
   const { user } = useAuth()
@@ -425,7 +426,7 @@ const LeaveApplication = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <DashboardLayout title="Leave Portal & Management">
       {/* Enhanced Header */}
       {/* Enhanced Header */}
       <Box sx={{
@@ -1422,7 +1423,7 @@ const LeaveApplication = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </DashboardLayout>
   )
 }
 

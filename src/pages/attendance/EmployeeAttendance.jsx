@@ -40,6 +40,7 @@ import {
 import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const EmployeeAttendance = () => {
   const { user } = useAuth()
@@ -189,7 +190,7 @@ const EmployeeAttendance = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', p: 3 }}>
+    <DashboardLayout title="Employee Attendance History">
       {/* Header */}
       <Box sx={{
         backgroundColor: '#00c853',
@@ -407,7 +408,7 @@ const EmployeeAttendance = () => {
           </Card>
         </Grid>
       </Grid>
-    </Box>
+    </DashboardLayout>
   )
 }
 

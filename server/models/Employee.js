@@ -99,7 +99,9 @@ const employeeSchema = new mongoose.Schema(
         lat: { type: Number, default: 40.7128 },
         lng: { type: Number, default: -74.006 },
         radius: { type: Number, default: 100 } // meters
-    }
+    },
+    biometricTemplate: { type: String, default: '' }, // For FaceID/Fingerprint hash
+    isBiometricEnabled: { type: Boolean, default: false }
   },
   { timestamps: true }
 );

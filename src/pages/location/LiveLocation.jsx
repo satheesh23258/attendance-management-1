@@ -43,6 +43,7 @@ import { attendanceAPI, employeeAPI, locationAPI } from '../../services/api'
 import { useAuth } from '../../contexts/AuthContext'
 import { toast } from 'react-hot-toast'
 import { loadGoogleMaps } from '../../utils/googleMapsLoader'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const LiveLocation = () => {
   const { user } = useAuth()
@@ -545,7 +546,7 @@ const LiveLocation = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <DashboardLayout title="Live Employee Tracking">
       {renderLoadingOverlay()}
       {/* Header */}
       <Box sx={{
@@ -880,7 +881,7 @@ const LiveLocation = () => {
           )}
         </DialogContent>
       </Dialog>
-    </Box>
+    </DashboardLayout>
   )
 }
 

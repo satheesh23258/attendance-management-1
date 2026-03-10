@@ -25,6 +25,7 @@ import {
   LowPriority,
   AccessTime
 } from '@mui/icons-material'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const MyTasks = () => {
   const [tasks] = useState([
@@ -111,7 +112,7 @@ const MyTasks = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <DashboardLayout title="Tasks & Assignments">
       {/* Header */}
       <Box sx={{
         background: '#00c853',
@@ -277,7 +278,7 @@ const MyTasks = () => {
           ))}
         </Grid>
       </Box>
-    </Box>
+    </DashboardLayout>
   )
 }
 

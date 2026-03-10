@@ -47,6 +47,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { attendanceAPI, employeeAPI } from '../../services/api'
 import { toast } from 'react-hot-toast'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const HRAttendance = () => {
   const navigate = useNavigate()
@@ -217,7 +218,7 @@ const HRAttendance = () => {
   // existing useEffect...
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', p: 3 }}>
+    <DashboardLayout title="Employee Attendance Management (HR)">
       {/* Header */}
       <Box sx={{
         backgroundColor: '#00c853', // Updated to match theme
@@ -528,7 +529,7 @@ const HRAttendance = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </DashboardLayout>
   )
 }
 

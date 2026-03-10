@@ -38,7 +38,11 @@ import {
   ArrowBack,
   Search as SearchIcon,
   AccountBalanceWallet,
-  ReceiptLong
+  ReceiptLong,
+  Inventory,
+  CalendarMonth,
+  ContactSupport,
+  Payments
 } from '@mui/icons-material'
 import { useAuth } from '../contexts/AuthContext'
 import { Collapse, Button } from '@mui/material'
@@ -114,7 +118,10 @@ const MainLayout = ({ children }) => {
         { text: 'View Reports', icon: <Assessment />, path: '/admin/system-reports' },
         { text: 'Live Tracking', icon: <LocationOn />, path: '/location/tracking' },
         { text: 'Expense Approvals', icon: <AccountBalanceWallet />, path: '/admin/expenses' },
-        { text: 'System Audit Logs', icon: <HistoryEdu />, path: '/admin/audit-logs' }
+        { text: 'System Audit Logs', icon: <HistoryEdu />, path: '/admin/audit-logs' },
+        { text: 'Payroll Management', icon: <Payments />, path: '/admin/payroll' },
+        { text: 'Asset Inventory', icon: <Inventory />, path: '/admin/asset-inventory' },
+        { text: 'Shift Roster', icon: <CalendarMonth />, path: '/admin/shift-roster' }
       )
     }
 
@@ -127,7 +134,9 @@ const MainLayout = ({ children }) => {
         { text: 'Performance Reviews', icon: <Assessment />, path: '/hr/performance' },
         { text: 'Live Tracking', icon: <LocationOn />, path: '/location/tracking' },
         { text: 'Leave Application', icon: <LocationOn />, path: '/hr/leave-application' },
-        { text: 'Expense Approvals', icon: <AccountBalanceWallet />, path: '/hr/expenses' }
+        { text: 'Expense Approvals', icon: <AccountBalanceWallet />, path: '/hr/expenses' },
+        { text: 'Payroll Hub', icon: <Payments />, path: '/hr/payroll' },
+        { text: 'Shift Management', icon: <CalendarMonth />, path: '/hr/shift-roster' }
       )
     }
 
@@ -139,7 +148,9 @@ const MainLayout = ({ children }) => {
         { text: 'My Services', icon: <Assignment />, path: '/employee/services' },
         { text: 'My Profile', icon: <AccountCircle />, path: '/employee/profile' },
         { text: 'Leave Application', icon: <AccessTime />, path: '/employee/leave-application' },
-        { text: 'Expense Claims', icon: <ReceiptLong />, path: '/employee/expenses' }
+        { text: 'Expense Claims', icon: <ReceiptLong />, path: '/employee/expenses' },
+        { text: 'Financial Hub', icon: <Payments />, path: '/employee/payroll' },
+        { text: 'Helpdesk & Support', icon: <ContactSupport />, path: '/employee/support' }
       )
     }
 

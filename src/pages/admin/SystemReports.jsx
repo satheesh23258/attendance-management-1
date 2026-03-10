@@ -19,6 +19,7 @@ import {
   TrendingUp,
   TrendingDown
 } from '@mui/icons-material'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const SystemReports = () => {
   const [reportType, setReportType] = useState('overview')
@@ -479,130 +480,127 @@ const SystemReports = () => {
     }
   }
 
+
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
-      {/* Header */}
+    <DashboardLayout title="System Reports">
+      {/* Header Banner */}
       <Box sx={{
         background: '#00c853',
         color: 'white',
         p: 3,
         display: 'flex',
-        justifyContent: 'space-between',
         alignItems: 'center',
+        gap: 2,
         mb: 3,
-        borderRadius: '0 0 16px 16px',
+        borderRadius: 2,
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
       }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <IconButton
-            color="inherit"
-            onClick={handleBack}
-            sx={{ bgcolor: 'rgba(255,255,255,0.1)', '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' } }}
-          >
-            <ArrowBack />
-          </IconButton>
-          <Box>
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              System Reports
-            </Typography>
-            <Typography variant="body1" sx={{ opacity: 0.9 }}>
-              Analytical insights and system performance data
-            </Typography>
-          </Box>
+        <IconButton
+          color="inherit"
+          onClick={handleBack}
+          sx={{ bgcolor: 'rgba(255,255,255,0.1)', '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' } }}
+        >
+          <ArrowBack />
+        </IconButton>
+        <Box>
+          <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            System Reports
+          </Typography>
+          <Typography variant="body1" sx={{ opacity: 0.9 }}>
+            Analytical insights and system performance data
+          </Typography>
         </Box>
       </Box>
 
-      {/* Main Content */}
-      <Box sx={{ p: 3 }}>
-        {/* Report Controls */}
-        <Card sx={{ mb: 3 }}>
-          <CardContent>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs={12} sm={6} md={3}>
-                <FormControl fullWidth>
-                  <InputLabel>Report Type</InputLabel>
-                  <Select
-                    value={reportType}
-                    onChange={(e) => setReportType(e.target.value)}
-                    label="Report Type"
-                  >
-                    <MenuItem value="overview">System Overview</MenuItem>
-                    <MenuItem value="users">User Analytics</MenuItem>
-                    <MenuItem value="performance">Performance Metrics</MenuItem>
-                    <MenuItem value="security">Security Report</MenuItem>
-                    <MenuItem value="financial">Financial Report</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <FormControl fullWidth>
-                  <InputLabel>Time Range</InputLabel>
-                  <Select
-                    value={timeRange}
-                    onChange={(e) => setTimeRange(e.target.value)}
-                    label="Time Range"
-                  >
-                    <MenuItem value="week">Last Week</MenuItem>
-                    <MenuItem value="month">Last Month</MenuItem>
-                    <MenuItem value="quarter">Last Quarter</MenuItem>
-                    <MenuItem value="year">Last Year</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Button
-                  variant="contained"
-                  fullWidth
-                  startIcon={<Assessment />}
-                  onClick={handleExport}
+      {/* Report Controls */}
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} sm={6} md={3}>
+              <FormControl fullWidth>
+                <InputLabel>Report Type</InputLabel>
+                <Select
+                  value={reportType}
+                  onChange={(e) => setReportType(e.target.value)}
+                  label="Report Type"
                 >
-                  Generate Report
-                </Button>
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <Button
-                  variant="outlined"
-                  fullWidth
-                  startIcon={<Download />}
-                  onClick={handleExport}
-                >
-                  Download
-                </Button>
-              </Grid>
+                  <MenuItem value="overview">System Overview</MenuItem>
+                  <MenuItem value="users">User Analytics</MenuItem>
+                  <MenuItem value="performance">Performance Metrics</MenuItem>
+                  <MenuItem value="security">Security Report</MenuItem>
+                  <MenuItem value="financial">Financial Report</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
-          </CardContent>
-        </Card>
+            <Grid item xs={12} sm={6} md={3}>
+              <FormControl fullWidth>
+                <InputLabel>Time Range</InputLabel>
+                <Select
+                  value={timeRange}
+                  onChange={(e) => setTimeRange(e.target.value)}
+                  label="Time Range"
+                >
+                  <MenuItem value="week">Last Week</MenuItem>
+                  <MenuItem value="month">Last Month</MenuItem>
+                  <MenuItem value="quarter">Last Quarter</MenuItem>
+                  <MenuItem value="year">Last Year</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="contained"
+                fullWidth
+                startIcon={<Assessment />}
+                onClick={handleExport}
+              >
+                Generate Report
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="outlined"
+                fullWidth
+                startIcon={<Download />}
+                onClick={handleExport}
+              >
+                Download
+              </Button>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
 
-        {/* Metrics Display */}
-        {renderMetrics()}
+      {/* Metrics Display */}
+      {renderMetrics()}
 
-        {/* Additional Information */}
-        <Card sx={{ mt: 3 }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              Report Summary
-            </Typography>
+      {/* Additional Information */}
+      <Card sx={{ mt: 3 }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Report Summary
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            This report provides comprehensive insights into system performance, user engagement,
+            security metrics, and financial data. Use the filters above to customize the report
+            timeframe and focus areas.
+          </Typography>
+          <Box sx={{ mt: 2 }}>
             <Typography variant="body2" color="text.secondary">
-              This report provides comprehensive insights into system performance, user engagement,
-              security metrics, and financial data. Use the filters above to customize the report
-              timeframe and focus areas.
+              <strong>Key Insights:</strong>
             </Typography>
-            <Box sx={{ mt: 2 }}>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Key Insights:</strong>
-              </Typography>
-              <ul style={{ color: 'text.secondary', fontSize: '14px' }}>
-                <li>System performance is within acceptable parameters</li>
-                <li>User engagement shows positive growth trends</li>
-                <li>Security measures are effectively protecting the system</li>
-                <li>Financial metrics indicate healthy operational performance</li>
-              </ul>
-            </Box>
-          </CardContent>
-        </Card>
-      </Box>
-    </Box>
+            <ul style={{ fontSize: '14px' }}>
+              <li>System performance is within acceptable parameters</li>
+              <li>User engagement shows positive growth trends</li>
+              <li>Security measures are effectively protecting the system</li>
+              <li>Financial metrics indicate healthy operational performance</li>
+            </ul>
+          </Box>
+        </CardContent>
+      </Card>
+    </DashboardLayout>
   )
 }
+
 
 export default SystemReports

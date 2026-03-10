@@ -5,18 +5,36 @@ import App from './App.jsx'
 import { AuthProvider } from './contexts/AuthContext'
 import RoleThemeProvider from './contexts/ThemeContext'
 
-import { registerSW } from 'virtual:pwa-register'
+// Only register service worker in production to avoid caching issues in dev
+if (import.meta.env.PROD) {
+  import('virtual:pwa-register').then(({ registerSW }) => {
+    registerSW({ immediate: true })
+  })
+}
 
-registerSW({ immediate: true })
+const root = document.getElementById('root')
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <RoleThemeProvider role="hybrid">
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </RoleThemeProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-)
+if (!root) {
+  console.error('Root element not found!')
+} else {
+  try {
+    ReactDOM.createRoot(root).render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <RoleThemeProvider role="hybrid">
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </RoleThemeProvider>
+        </BrowserRouter>
+      </React.StrictMode>,
+    )
+    console.log('React app rendered successfully')
+  } catch (error) {
+    console.error('Failed to render React app:', error)
+    root.innerHTML = `<div style="padding:40px;font-family:monospace;color:red;">
+      <h1>React Render Error</h1>
+      <pre>${error?.stack || error?.message || String(error)}</pre>
+    </div>`
+  }
+}

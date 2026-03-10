@@ -25,6 +25,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { attendanceAPI } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const AttendanceDashboard = () => {
   const navigate = useNavigate()
@@ -124,7 +125,7 @@ const AttendanceDashboard = () => {
   const isCheckedIn = todayAttendance && todayAttendance.checkIn && !todayAttendance.checkOut
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <DashboardLayout title="Attendance Dashboard">
       {/* Header */}
       <Box sx={{
         background: '#00c853',
@@ -343,7 +344,7 @@ const AttendanceDashboard = () => {
           </CardContent>
         </Card>
       </Box>
-    </Box>
+    </DashboardLayout>
   )
 }
 

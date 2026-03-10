@@ -36,6 +36,7 @@ import { useTheme } from '../../contexts/ThemeContext'
 import { employeeAPI } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import DashboardLayout from '../../components/DashboardLayout'
 
 const EmployeeRecords = () => {
   const { colors } = useTheme()
@@ -111,7 +112,7 @@ const EmployeeRecords = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <DashboardLayout title="Employee Management Records">
       {/* Header */}
       <Box sx={{
         backgroundColor: '#000000', // Enforced Yellow Theme
@@ -385,7 +386,7 @@ const EmployeeRecords = () => {
           <Button onClick={() => setOpenDialog(false)}>Close</Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </DashboardLayout>
   )
 }
 

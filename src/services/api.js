@@ -54,6 +54,7 @@ export const authAPI = {
   resetPassword: (data) => api.post('/auth/reset-password', data),
   changePassword: (data) => api.put('/auth/change-password', data),
   updateProfile: (data) => api.put('/auth/profile', data),
+  getHybridPermissions: () => api.get('/hybrid-permissions/my-permission'),
 }
 
 // User API
@@ -163,6 +164,38 @@ export const expenseAPI = {
 export const auditAPI = {
   getLogs: (params) => api.get('/audit', { params }),
   getStats: () => api.get('/audit/stats'),
+}
+
+// Payroll API
+export const payrollAPI = {
+  getAll: (params) => api.get('/payroll/all', { params }),
+  getMyHistory: () => api.get('/payroll/my'),
+  generate: (data) => api.post('/payroll/generate', data),
+  updateStatus: (id, data) => api.patch(`/payroll/status/${id}`, data),
+}
+
+// Shift API
+export const shiftAPI = {
+  getAll: (params) => api.get('/shifts/all', { params }),
+  getMyHistory: (params) => api.get('/shifts/my', { params }),
+  assign: (data) => api.post('/shifts/assign', data),
+  remove: (id) => api.delete(`/shifts/${id}`),
+}
+
+// Ticket API
+export const ticketAPI = {
+  getAll: (params) => api.get('/tickets/all', { params }),
+  getMyTickets: () => api.get('/tickets/my'),
+  create: (data) => api.post('/tickets/create', data),
+  update: (id, data) => api.patch(`/tickets/${id}`, data),
+}
+
+// Asset API
+export const assetAPI = {
+  getAll: (params) => api.get('/assets/all', { params }),
+  getMyAssets: () => api.get('/assets/my'),
+  add: (data) => api.post('/assets/add', data),
+  update: (id, data) => api.patch(`/assets/${id}`, data),
 }
 
 export default api
