@@ -76,7 +76,11 @@ app.use('/api/settings', settingsRoutes);
 
 app.use('/api/hybrid-permissions', hybridPermissionRoutes);
 import leaveRoutes from './routes/leaveRoutes.js';
+import expenseRoutes from './routes/expenseRoutes.js';
+import auditRoutes from './routes/auditRoutes.js';
 app.use('/api/leaves', leaveRoutes);
+app.use('/api/expenses', expenseRoutes);
+app.use('/api/audit', auditRoutes);
 
 // Seed database with UI data if empty
 const seedDatabase = async () => {

@@ -34,8 +34,11 @@ import {
   Logout,
   ChevronLeft,
   Security,
+  HistoryEdu,
   ArrowBack,
-  Search as SearchIcon
+  Search as SearchIcon,
+  AccountBalanceWallet,
+  ReceiptLong
 } from '@mui/icons-material'
 import { useAuth } from '../contexts/AuthContext'
 import { Collapse, Button } from '@mui/material'
@@ -109,7 +112,9 @@ const MainLayout = ({ children }) => {
         { text: 'Manage Hybrid Permissions', icon: <Security />, path: '/admin/manage-permissions' },
         { text: 'View Services', icon: <Assignment />, path: '/admin/services' },
         { text: 'View Reports', icon: <Assessment />, path: '/admin/system-reports' },
-        { text: 'Live Tracking', icon: <LocationOn />, path: '/location/tracking' }
+        { text: 'Live Tracking', icon: <LocationOn />, path: '/location/tracking' },
+        { text: 'Expense Approvals', icon: <AccountBalanceWallet />, path: '/admin/expenses' },
+        { text: 'System Audit Logs', icon: <HistoryEdu />, path: '/admin/audit-logs' }
       )
     }
 
@@ -121,7 +126,8 @@ const MainLayout = ({ children }) => {
         { text: 'Attendance Management', icon: <AccessTime />, path: '/hr/attendance-management' },
         { text: 'Performance Reviews', icon: <Assessment />, path: '/hr/performance' },
         { text: 'Live Tracking', icon: <LocationOn />, path: '/location/tracking' },
-        { text: 'Leave Application', icon: <LocationOn />, path: '/hr/leave-application' } // Changed icon slightly? using generic
+        { text: 'Leave Application', icon: <LocationOn />, path: '/hr/leave-application' },
+        { text: 'Expense Approvals', icon: <AccountBalanceWallet />, path: '/hr/expenses' }
       )
     }
 
@@ -132,7 +138,8 @@ const MainLayout = ({ children }) => {
         { text: 'My Location', icon: <LocationOn />, path: '/employee/location' },
         { text: 'My Services', icon: <Assignment />, path: '/employee/services' },
         { text: 'My Profile', icon: <AccountCircle />, path: '/employee/profile' },
-        { text: 'Leave Application', icon: <AccessTime />, path: '/employee/leave-application' }
+        { text: 'Leave Application', icon: <AccessTime />, path: '/employee/leave-application' },
+        { text: 'Expense Claims', icon: <ReceiptLong />, path: '/employee/expenses' }
       )
     }
 

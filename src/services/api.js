@@ -151,4 +151,18 @@ export const settingsAPI = {
   updateSystemSettings: (data) => api.put('/settings/system', data),
 }
 
+// Expense API
+export const expenseAPI = {
+  getAll: () => api.get('/expenses/all'),
+  getMyExpenses: () => api.get('/expenses/my'),
+  submit: (data) => api.post('/expenses/submit', data),
+  updateStatus: (id, data) => api.patch(`/expenses/status/${id}`, data),
+}
+
+// Audit API
+export const auditAPI = {
+  getLogs: (params) => api.get('/audit', { params }),
+  getStats: () => api.get('/audit/stats'),
+}
+
 export default api

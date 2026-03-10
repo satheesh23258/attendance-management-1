@@ -58,6 +58,9 @@ import ForgotPasswordRequest from "./pages/auth/ForgotPasswordRequest";
 import NotificationsPage from "./pages/notifications/Notifications";
 import AttendanceDashboard from "./pages/attendance/AttendanceDashboard";
 import Settings from "./pages/settings/Settings";
+import MyExpenses from "./pages/employee/MyExpenses";
+import ClaimApprovals from "./pages/hr/ClaimApprovals";
+import AuditLogs from "./pages/admin/AuditLogs";
 function App() {
   return (
     <>
@@ -150,6 +153,8 @@ function App() {
         <Route path="/admin/system-reports" element={<SystemReports />} />
         <Route path="/admin/system-settings" element={<SystemSettings />} />
         <Route path="/admin/user-management" element={<UserManagement />} />
+        <Route path="/admin/expenses" element={<ClaimApprovals />} />
+        <Route path="/admin/audit-logs" element={<AuditLogs />} />
         <Route
           path="/admin/hybrid-permissions"
           element={<HybridPermissions />}
@@ -166,6 +171,7 @@ function App() {
         <Route path="/hr/leave-application" element={<LeaveApplication />} />
         <Route path="/hr/test-leave" element={<TestLeave />} />
         <Route path="/hr/attendance-management" element={<HRAttendance />} />
+        <Route path="/hr/expenses" element={<ClaimApprovals />} />
         {/* Service Management Routes */}
         <Route path="/services" element={<ServiceList />} />
         <Route
@@ -210,6 +216,7 @@ function App() {
 
         {/* Employee Services & Attendance */}
         <Route path="/employee/services" element={<ServiceList />} />
+        <Route path="/employee/expenses" element={<MyExpenses />} />
         <Route path="/employee/attendance" element={<AttendanceDashboard />} />
 
         {/* Report Routes */}

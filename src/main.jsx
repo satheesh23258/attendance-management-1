@@ -5,6 +5,10 @@ import App from './App.jsx'
 import { AuthProvider } from './contexts/AuthContext'
 import RoleThemeProvider from './contexts/ThemeContext'
 
+import { registerSW } from 'virtual:pwa-register'
+
+registerSW({ immediate: true })
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
